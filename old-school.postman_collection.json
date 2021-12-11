@@ -1,0 +1,36 @@
+{
+	"variables": [],
+	"info": {
+		"name": "happraisal",
+		"_postman_id": "08731752-819b-36b0-7a46-eafb80cb6793",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getPersons",
+			"request": {
+				"url": "",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "postPersons",
+			"request": {
+				"url": "localhost:8088/persons",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"lastName\": \"QUINTON\",\n\t\"firstanem\": \"Emmanuel\",\n\t\"isManager\": true\n\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
