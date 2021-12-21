@@ -1,0 +1,173 @@
+{
+	"info": {
+		"_postman_id": "b001fa68-9c0a-4c58-aae0-f502449547dc",
+		"name": "happraisal",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "persons",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8088/persons",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"persons"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "persons",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"lastName\": \"QUINTON\",\n\t\"firstName\": \"Emmanuel\",\n\t\"isManager\": true\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8088/persons",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"persons"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "forms",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8088/persons",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"persons"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "forms",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n            \"id\": \"ff07e408-13d1-40d5-bf5f-98c6d11841c9\",\n            \"date\": \"2021-12-09T07:51:40.583659Z\",\n            \"manager\":   {\n            \"id\": \"6433ce85-29ad-48b6-adb4-03204f688429\"\n        },\n            \"employee\": null,\n            \"form\": null\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8088/interviews",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"interviews"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "interviews",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8088/interviews",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"interviews"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "interviews",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n            \"date\": \"2021-12-09T07:51:40.583659Z\",\n            \"manager\":   {\n            \"id\": \"6433ce85-29ad-48b6-adb4-03204f688429\"\n        },\n            \"employee\": null,\n            \"form\": null\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8088/interviews",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"interviews"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "questions",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"question\": \"Comment se passe ton projet\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8088/forms/281d20e7-3a71-4e10-b41a-fa41d04c5a09/questions",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"forms",
+						"281d20e7-3a71-4e10-b41a-fa41d04c5a09",
+						"questions"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
