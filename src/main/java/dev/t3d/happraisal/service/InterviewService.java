@@ -26,10 +26,6 @@ public class InterviewService {
     }
 
     public List<Interview> findAll() {
-
-        var interview = new Interview();
-        interview.setDate(Instant.now());
-        interviewRepository.save(interview);
         return interviewRepository.findAll();
     }
 }

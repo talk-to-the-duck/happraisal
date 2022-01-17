@@ -15,6 +15,7 @@ import java.util.UUID;
 public class QuestionAnswer {
 
     @Id
+    @Column(columnDefinition = "uuid")
     @Getter
     @Setter
     @GeneratedValue(generator = "UUID")

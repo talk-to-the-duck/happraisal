@@ -18,6 +18,7 @@ import java.util.UUID;
 public class Form {
 
     @Id
+    @Column(columnDefinition = "uuid")
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name="UUID", strategy = "org.hibernate.id.UUIDGenerator")
     private UUID id;

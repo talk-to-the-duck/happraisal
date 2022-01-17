@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "b001fa68-9c0a-4c58-aae0-f502449547dc",
+		"_postman_id": "b7ceda15-8f3a-4d16-8d24-e67a0e6ca726",
 		"name": "happraisal",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -56,13 +56,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8088/persons",
+					"raw": "localhost:8088/forms",
 					"host": [
 						"localhost"
 					],
 					"port": "8088",
 					"path": [
-						"persons"
+						"forms"
 					]
 				}
 			},
@@ -75,7 +75,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "    {\n            \"id\": \"ff07e408-13d1-40d5-bf5f-98c6d11841c9\",\n            \"date\": \"2021-12-09T07:51:40.583659Z\",\n            \"manager\":   {\n            \"id\": \"6433ce85-29ad-48b6-adb4-03204f688429\"\n        },\n            \"employee\": null,\n            \"form\": null\n        }",
+					"raw": "    {\n\n        \n    }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -83,13 +83,13 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8088/interviews",
+					"raw": "localhost:8088/forms",
 					"host": [
 						"localhost"
 					],
 					"port": "8088",
 					"path": [
-						"interviews"
+						"forms"
 					]
 				}
 			},
@@ -120,7 +120,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "    {\n            \"date\": \"2021-12-09T07:51:40.583659Z\",\n            \"manager\":   {\n            \"id\": \"6433ce85-29ad-48b6-adb4-03204f688429\"\n        },\n            \"employee\": null,\n            \"form\": null\n        }",
+					"raw": "    {\n            \"date\": \"2021-12-09T07:51:40.583659Z\",\n            \"manager\":   {\n            \"id\": \"c25f6f48-a18e-410b-a0c3-03a1d314b483\"\n        },\n            \"employee\": null,\n            \"form\": [ {\n                \"id\": \"aa59921a-15f9-4cad-a052-18c87e24c2ec\",\n                \"questions\": {\n                    \"id\": \"b20e2751-73ff-446e-9703-af2467872509\",\n                    \"question\": \"Comment se passe ton projet\",\n                    \"answer\": null\n                }\n            } ]\n        }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -155,14 +155,14 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8088/forms/281d20e7-3a71-4e10-b41a-fa41d04c5a09/questions",
+					"raw": "localhost:8088/forms/b84e50b5-6aa4-4099-b923-680ae9e050fd/questions",
 					"host": [
 						"localhost"
 					],
 					"port": "8088",
 					"path": [
 						"forms",
-						"281d20e7-3a71-4e10-b41a-fa41d04c5a09",
+						"b84e50b5-6aa4-4099-b923-680ae9e050fd",
 						"questions"
 					]
 				}
