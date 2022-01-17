@@ -18,6 +18,7 @@ import java.util.UUID;
 public class Interview {
 
     @Id
+    @Column(columnDefinition = "uuid")
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name="UUID", strategy = "org.hibernate.id.UUIDGenerator")
     private UUID id;
@@ -31,7 +32,7 @@ public class Interview {
     @ManyToOne
     private Person employee;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade =  CascadeType.DETACH)
     @JoinColumn(name = "form_id", referencedColumnName = "id")
     private Form form;
 }
