@@ -29,13 +29,13 @@ Happraisal is an application that makes people working on the appraisal **h**app
   * [x] add conf
   * [x] add dependencies
   * [x] create integration test of endpoints
-  * [ ] create integration test of repositories
-* [ ] create component tests
+  * [x] create integration test of repositories
+* [ ] create system tests
   * [x] add sourceset https://docs.gradle.org/current/userguide/java_testing.html#sec:configuring_java_integration_tests
   * [x] add conf
   * [x] add dependencies
-  * [ ] create integration test of endpoints
-  * [ ] create integration test of repositories
+  * [x] create system test of endpoints
+  
 
 ## Unit Tests
 To create  unit tests we use Junit5 and Mockito
@@ -45,6 +45,5 @@ To create  unit tests we use Junit5 and Mockito
 All integration tests are grouped in the integration-test sourcet. 
 
 We use 
-for service's integration tests 
-
-for endpoint's integration tests
+for service's integration tests the annotations @DataJpaTest and @Sql
+for endpoint's integration tests MockMvc and the annotation @WebMvctest

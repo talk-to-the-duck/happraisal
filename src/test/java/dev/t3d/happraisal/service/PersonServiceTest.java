@@ -4,6 +4,7 @@ import dev.t3d.happraisal.entity.Person;
 import dev.t3d.happraisal.repository.PersonRepository;
 import org.assertj.core.api.BDDAssertions;
 import org.assertj.core.api.BDDSoftAssertions;
+import org.assertj.core.groups.Tuple;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
@@ -56,17 +57,20 @@ class PersonServiceTest {
     final Person actualPerson = personService.getById(personId);
 
     // then
-    BDDAssertions.then(actualPerson).isEqualTo(expectedPerson);
+    BDDAssertions.then(actualPerson)
+            .as("The actual person should be equals to the expected person")
+            .isEqualTo(expectedPerson);
   }
 
   @Test
   void should_return_all_persons() {
     // Setup
     // Configure PersonRepository.findAll(...).
+    var personId = UUID.fromString("34d1a1f9-25f9-4aa4-98cd-01531cb8ec34");
     final List<Person> expectedPeople =
         List.of(
             new Person(
-                UUID.fromString("34d1a1f9-25f9-4aa4-98cd-01531cb8ec34"),
+                    personId,
                 "lastName",
                 "firstName",
                 false));
@@ -77,10 +81,14 @@ class PersonServiceTest {
 
     // then
     BDDMockito.then(personRepository).should().findAll();
+    BDDAssertions.assertThat(actualPeople)
+            .as("The actual people should be not null")
+            .isNotNull();
     BDDSoftAssertions.thenSoftly(
         softly -> {
-          softly.then(actualPeople).isNotNull();
           softly.then(actualPeople).hasSize(1);
+          softly.then(actualPeople).extracting(Person::getId, Person::getFirstName, Person::getLastName, Person::getIsManager)
+                  .contains(Tuple.tuple(personId, "firstName", "lastName", false));
         });
   }
 

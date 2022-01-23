@@ -29,9 +29,9 @@ public class FormRepositoryITest {
 
         // then
         var idNotNull = new Condition<Form>((Form form) -> form.getId() != null, "form id not null");
-        var asOneQuestion = new Condition<Form>((Form form) -> form.getQuestions().size() == 1, "form has pnly one question");
+        var asOneQuestion = new Condition<Form>((Form form) -> form.getQuestions().size() == 1, "form has only one question");
         BDDAssertions.then(actualForm)
-                .as("Check if a new form has been save.")
+                .as("Check if a new form has been saved.")
                 .has(idNotNull)
                 .has(asOneQuestion);
     }

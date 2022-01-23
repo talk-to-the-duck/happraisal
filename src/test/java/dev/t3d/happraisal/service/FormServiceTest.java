@@ -94,7 +94,7 @@ class FormServiceTest {
     // given
     var formId = UUID.fromString("18b8f2e2-f41c-4ca4-a007-c328390cd099");
     var savedForm = new Form();
-    var existingQuestion = new QuestionAnswer(formId, "What is your first name", null, savedForm);
+      var existingQuestion = new QuestionAnswer(formId, "What is your first name", null, savedForm);
     var questions = new HashSet<QuestionAnswer>();
     questions.add(existingQuestion);
     savedForm.setQuestions(questions);
@@ -113,9 +113,11 @@ class FormServiceTest {
 
     BDDMockito.then(questionAnswerRepository).should().save(questionAnswerArgumentCaptor.capture());
     var actualQuestion   = questionAnswerArgumentCaptor.getValue();
+    BDDAssertions.assertThat(actualQuestion)
+            .as("The actual question must to be not null")
+            .isNotNull();
     BDDSoftAssertions.thenSoftly(
         softly -> {
-          softly.then(actualQuestion).isNotNull();
           softly
               .then(actualQuestion)
               .extracting("form.questions", Assertions.as(InstanceOfAssertFactories.COLLECTION))

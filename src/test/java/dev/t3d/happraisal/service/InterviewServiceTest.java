@@ -43,7 +43,7 @@ class InterviewServiceTest {
     BDDMockito.verify(interviewRepository).save(interviewArgumentCaptor.capture());
     var actualInterviewToSave = interviewArgumentCaptor.getValue();
     BDDAssertions.then(actualInterviewToSave)
-        .as("Check is an interview has been save")
+        .as("Check if an interview has been saved")
         .isEqualTo(expectedInterviewToSave);
   }
 
