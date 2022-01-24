@@ -10,7 +10,7 @@ Happraisal is an application that makes people working on the appraisal **h**app
 - [] Add Integration tests  (MockMvc, TestContainer)
 - [] Add Component test (Rest Assured)
 - [] Add SonarQube configuration
-- [] Code formatting (google-java-format)
+- [x] Code formatting (google-java-format)
 - [] Validation of code quality (spotless / checkstyle)
 - [] Swagger UI
 - [] Database schema migration with Liquibase
