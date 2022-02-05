@@ -14,29 +14,27 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class FormService {
 
-    private final FormRepository formRepository;
-    private final QuestionAnswerRepository questionAnswerRepository;
+  private final FormRepository formRepository;
+  private final QuestionAnswerRepository questionAnswerRepository;
 
-    public Form create(Form form) {
-        return formRepository.save(form);
-    }
+  public Form create(Form form) {
+    return formRepository.save(form);
+  }
 
-    public Form getById(UUID formId) {
-        return formRepository.getById(formId);
-    }
+  public Form getById(UUID formId) {
+    return formRepository.getById(formId);
+  }
 
-    public List<Form> findAll() {
-        return formRepository.findAll();
-    }
+  public List<Form> findAll() {
+    return formRepository.findAll();
+  }
 
-    public QuestionAnswer createQuestion(UUID formId, QuestionAnswer question) {
+  public QuestionAnswer createQuestion(UUID formId, QuestionAnswer question) {
 
-       System.out.println("UUID =" + formId);
-        var form = getById(formId);
-        System.out.println("form =" + form);
-        var questionAnswer = new QuestionAnswer();
-       questionAnswer.setForm(form);
+    var form = getById(formId);
+    question.setForm(form);
+    form.getQuestions().add(question);
 
-         return questionAnswerRepository.save(questionAnswer);
-    }
+    return questionAnswerRepository.save(question);
+  }
 }

@@ -1,0 +1,36 @@
+sourceSets {
+    systemTest {
+        java {
+            compileClasspath += sourceSets.main.output
+            runtimeClasspath += sourceSets.main.output
+            srcDir file('src/system-test/java')
+        }
+        resources.srcDir file('src/system-test/resources')
+    }
+}
+
+configurations {
+    systemTestImplementation.extendsFrom implementation
+    systemTestRuntimeOnly.extendsFrom runtimeOnly
+}
+
+dependencies {
+    systemTestImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test'
+    systemTestImplementation group: 'io.rest-assured', name: 'rest-assured', version: '4.4.0'
+    systemTestImplementation group: 'org.mockito', name: 'mockito-core', version: '4.2.0'
+    systemTestImplementation group: 'org.mockito', name: 'mockito-inline', version: '4.2.0'
+
+
+}
+
+tasks.register('systemTest', Test) {
+    description = 'Runs system tests.'
+    group = 'verification'
+
+    testClassesDirs = sourceSets.systemTest.output.classesDirs
+    classpath = sourceSets.systemTest.runtimeClasspath
+    useJUnitPlatform()
+}
+
+
+build.dependsOn systemTest
