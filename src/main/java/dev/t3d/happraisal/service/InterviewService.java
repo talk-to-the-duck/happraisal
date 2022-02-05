@@ -1,11 +1,10 @@
 package dev.t3d.happraisal.service;
 
-import dev.t3d.happraisal.repository.InterviewRepository;
 import dev.t3d.happraisal.entity.Interview;
+import dev.t3d.happraisal.repository.InterviewRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.Instant;
 import java.util.List;
 import java.util.UUID;
 
@@ -13,23 +12,17 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class InterviewService {
 
-    private final InterviewRepository interviewRepository;
+  private final InterviewRepository interviewRepository;
 
-    public Interview create(Interview interview) {
+  public Interview create(Interview interview) {
+    return interviewRepository.save(interview);
+  }
 
+  public Interview getById(UUID interviewId) {
+    return interviewRepository.getById(interviewId);
+  }
 
-        return interviewRepository.save(interview);
-    }
-
-    public Interview getById(UUID interviewId) {
-        return interviewRepository.getById(interviewId);
-    }
-
-    public List<Interview> findAll() {
-
-        var interview = new Interview();
-        interview.setDate(Instant.now());
-        interviewRepository.save(interview);
-        return interviewRepository.findAll();
-    }
+  public List<Interview> findAll() {
+    return interviewRepository.findAll();
+  }
 }

@@ -1,7 +1,7 @@
 package dev.t3d.happraisal.service;
 
-import dev.t3d.happraisal.repository.PersonRepository;
 import dev.t3d.happraisal.entity.Person;
+import dev.t3d.happraisal.repository.PersonRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

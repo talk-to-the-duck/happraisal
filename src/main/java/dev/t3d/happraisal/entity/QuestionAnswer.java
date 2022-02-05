@@ -1,9 +1,6 @@
 package dev.t3d.happraisal.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -12,9 +9,11 @@ import java.util.UUID;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode(exclude = {"form"})
 public class QuestionAnswer {
 
     @Id
+    @Column(columnDefinition = "uuid")
     @Getter
     @Setter
     @GeneratedValue(generator = "UUID")
