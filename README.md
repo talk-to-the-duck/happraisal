@@ -11,7 +11,7 @@ Happraisal is an application that makes people working on the appraisal **h**app
 - [] Add Component test (Rest Assured)
 - [] Add SonarQube configuration
 - [] Code formatting (google-java-format)
-- [] Validation of code quality (spotless / checkstyle)
+- [] Code formatting check and apply - We use Spotless. See our documentation here: [spotless-check](docs/spotless-check.md)
 - [] Swagger UI
 - [] Database schema migration with Liquibase
 - [] Health check endpoint
