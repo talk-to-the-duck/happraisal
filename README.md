@@ -34,7 +34,7 @@ Happraisal is an application that makes people working on the appraisal **h**app
   * [x] add sourceset https://docs.gradle.org/current/userguide/java_testing.html#sec:configuring_java_integration_tests
   * [x] add conf
   * [x] add dependencies
-  * [x] create integration test of endpoints
+  * [x] create system test of endpoints
   * [x] create integration test of repositories
 
 ## Unit Tests
