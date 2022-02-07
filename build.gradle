@@ -37,6 +37,8 @@ test {
 apply from: "gradle/unit-test.gradle"
 apply from: "gradle/integration-test.gradle"
 apply from: "gradle/system-test.gradle"
+apply from: "gradle/spotless.gradle"
+
 
 systemTest {
 	shouldRunAfter integrationTest
