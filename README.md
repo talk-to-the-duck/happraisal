@@ -38,8 +38,8 @@ To create  unit tests we use Junit5 and Mockito
 
 ## Integration Tests
 
-All integration tests are grouped in the integration-test sourcet.
+All integration tests are grouped in the integration-test source directory.
 
 We use
-for service's integration tests the annotations @DataJpaTest and @Sql
-for endpoint's integration tests MockMvc and the annotation @WebMvctest
+for integration tests of services, the annotations @DataJpaTest and @Sql
+for integration tests of endpoints, MockMvc and the annotation @WebMvctest
