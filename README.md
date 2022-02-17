@@ -5,9 +5,9 @@ Happraisal is an application that makes people working on the appraisal **h**app
 
 # List of improvements
 
-- [ ] Add Unit tests (Junit5, Mockito, AssertJ)
-- [ ] Add Integration tests  (MockMvc, TestContainer)
-- [ ] Add Component test (Rest Assured)
+- [x] Add Unit tests (Junit5, Mockito, AssertJ)
+- [x] Add Integration tests  (MockMvc, TestContainer)
+- [x] Add Component test (Rest Assured)
 - [ ] Add SonarQube configuration
 - [x] Code formatting: see [Spotless documentation](docs/spotless-check.md)
 - [ ] Swagger UI
@@ -40,6 +40,6 @@ To create  unit tests we use Junit5 and Mockito
 
 All integration tests are grouped in the integration-test source directory.
 
-We use
+We use:
 for integration tests of services, the annotations @DataJpaTest and @Sql
 for integration tests of endpoints, MockMvc and the annotation @WebMvctest
