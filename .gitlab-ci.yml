@@ -1,0 +1,55 @@
+stages:
+  - build
+  - test
+
+
+image: adoptopenjdk/openjdk11-openj9:alpine-slim
+
+
+build:
+  stage: build
+  script:
+    - ./gradlew clean assemble
+  artifacts:
+    name: "$CI_COMMIT_REF_SLUG"
+    paths:
+      - build/libs/*
+    expire_in: 24 hrs
+    
+unit-test:
+  stage: test
+  script:
+    - ./gradlew test
+  artifacts:
+    when: always
+    name: "$CI_COMMIT_REF_SLUG"
+    paths:
+      - build/test-results/
+      - build/reports/
+    expire_in: 24 hrs
+
+.integration-test:
+  stage: test
+  script:
+    - ./gradlew integTest
+  artifacts:
+    when: always
+    name: "$CI_COMMIT_REF_SLUG"
+    paths:
+      - build/test-results/
+      - build/reports/
+    expire_in: 24 hrs
+    
+ 
+
+.system-test:
+  stage: test
+  script:
+    - ./gradlew systemTest
+  artifacts:
+    when: always
+    name: "$CI_COMMIT_REF_SLUG"
+    paths:
+      - build/test-results/
+      - build/reports/
+    expire_in: 24 hrs
