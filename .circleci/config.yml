@@ -1,11 +1,29 @@
 # Java Gradle CircleCI 2.0 configuration file
 # See: https://circleci.com/docs/2.0/language-java/
-version: 2
+version: 2.1
+
+
+workflows:
+  build:
+    jobs:
+      - assemble
+
+
+  tests:
+    jobs:
+      - unit-tests
+      - integration-tests
+      - system-tests
+
+
+
+
+
 
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
-  build:
+  assemble:
     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
     docker:
@@ -42,11 +60,20 @@ jobs:
             - ~/.gradle
           key: v1-dependencies-{{ checksum "build.gradle" }}
 
-      # run unit test!
-      - run: ./gradlew test
+  unit-tests:
+    docker:
+      - image: cimg/openjdk:17.0.5
+    step:
+        - run: ./gradlew test
 
-      # run integration test!
+  integration-tests:
+    docker:
+      - image: cimg/openjdk:17.0.5
+    step: 
       - run: ./gradlew integrationTest
 
-      # run systemTest
+  system-tests:
+    docker:
+      - image: cimg/openjdk:17.0.5
+    step:
       - run: ./gradlew systemTest
