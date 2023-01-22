@@ -3,23 +3,6 @@
 version: 2.1
 
 
-workflows:
-  build:
-    jobs:
-      - assemble
-
-
-  tests:
-    jobs:
-      - unit-tests
-      - integration-tests
-      - system-tests
-
-
-
-
-
-
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
@@ -35,7 +18,7 @@ jobs:
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # - image: circleci/postgres:9.4
 
-    working_directory: ~/repo
+    working_directory: ~/happraisal
 
     environment:
       # Customize the JVM maximum heap limit
@@ -45,6 +28,8 @@ jobs:
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
       - checkout
+      - attach_workspace:
+          at: ~/happraisal
 
       # Download and cache dependencies
       - restore_cache:
@@ -59,21 +44,79 @@ jobs:
           paths:
             - ~/.gradle
           key: v1-dependencies-{{ checksum "build.gradle" }}
+      - persist_to_workspace:
+          root: ~/happraisal
+          paths: ./build
+      - store_artifacts:
+          path: /build
 
   unit-tests:
     docker:
       - image: cimg/openjdk:17.0.5
-    step:
+
+    working_directory: ~/happraisal
+    steps:
+        - checkout
+        - restore_cache:
+            keys:
+              - v1-dependencies-{{ checksum "build.gradle" }}
+              # fallback to using the latest cache if no exact match is found
+              - v1-dependencies-
         - run: ./gradlew test
+        - save_cache:
+            paths:
+              - ~/.gradle
+            key: v1-dependencies-{{ checksum "build.gradle" }}
+
 
   integration-tests:
     docker:
       - image: cimg/openjdk:17.0.5
-    step: 
-      - run: ./gradlew integrationTest
+
+    working_directory: ~/happraisal
+    steps:
+        - checkout
+        - restore_cache:
+            keys:
+              - v1-dependencies-{{ checksum "build.gradle" }}
+              # fallback to using the latest cache if no exact match is found
+              - v1-dependencies-
+        - run: ./gradlew integrationTest
+        - save_cache:
+            paths:
+              - ~/.gradle
+            key: v1-dependencies-{{ checksum "build.gradle" }}
+
 
   system-tests:
     docker:
       - image: cimg/openjdk:17.0.5
-    step:
-      - run: ./gradlew systemTest
+
+    working_directory: ~/happraisal
+    steps:
+        - checkout
+        - restore_cache:
+            keys:
+              - v1-dependencies-{{ checksum "build.gradle" }}
+              # fallback to using the latest cache if no exact match is found
+              - v1-dependencies-
+        - run: ./gradlew systemTest
+        - save_cache:
+            paths:
+              - ~/.gradle
+            key: v1-dependencies-{{ checksum "build.gradle" }}
+
+workflows:
+  version: 2.1
+  mocroservice:
+    jobs:
+      - assemble
+      - unit-tests:
+          requires:
+            - assemble
+      - integration-tests:
+          requires:
+            - assemble
+      - system-tests:
+          requires:
+            - assemble
