@@ -69,7 +69,7 @@ jobs:
               - ~/.gradle
             key: v1-dependencies-{{ checksum "build.gradle" }}
         - store_test_results:
-            path: /build/test-results
+            path:  ~/happraisal/build/test-results
 
 
 
