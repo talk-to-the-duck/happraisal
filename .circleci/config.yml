@@ -49,7 +49,7 @@ jobs:
           paths:
             - ./build
       - store_artifacts:
-          path: /build/libs
+          path: ~/happraisal/build/libs
 
   unit-tests:
     docker:
