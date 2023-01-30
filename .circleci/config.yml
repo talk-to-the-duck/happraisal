@@ -46,7 +46,7 @@ jobs:
           key: v1-dependencies-{{ checksum "build.gradle" }}
       - persist_to_workspace:
           root: /happraisal
-          paths: /build
+          paths: build
       - store_artifacts:
           path: /build/libs
 
