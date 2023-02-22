@@ -42,3 +42,27 @@ jobs:
         distribution: 'temurin'
         cache: gradle
     - run: ./gradlew test --no-daemon
+    
+  integration-tests:
+    runs-on: ubuntu-latest
+    needs: assemble
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: gradle
+    - run: ./gradlew integrationTest --no-daemon
+    
+  system-tests:
+    runs-on: ubuntu-latest
+    needs: assemble
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: gradle
+    - run: ./gradlew integrationTest --no-daemon
