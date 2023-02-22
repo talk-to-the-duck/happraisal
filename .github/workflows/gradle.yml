@@ -78,7 +78,7 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: gradle
-    - run: ./gradlew integrationTest --no-daemon
+    - run: ./gradlew systemTest --no-daemon
     - name: Archive system test report
       uses: actions/upload-artifact@v3
       with:
