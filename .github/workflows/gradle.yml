@@ -43,7 +43,7 @@ jobs:
         distribution: 'temurin'
         cache: gradle
     - run: ./gradlew test --no-daemon
-    - name: Archive code coverage results
+    - name: Archive unit test report
       uses: actions/upload-artifact@v3
       with:
         name: unit-tests-report
@@ -61,7 +61,13 @@ jobs:
         distribution: 'temurin'
         cache: gradle
     - run: ./gradlew integrationTest --no-daemon
-    
+    - name: Archive integration test report
+      uses: actions/upload-artifact@v3
+      with:
+        name: unit-tests-report
+        path: build/reports/tests/integrationTest
+        retention-days: 1
+        
   system-tests:
     runs-on: ubuntu-latest
     needs: assemble
@@ -73,3 +79,9 @@ jobs:
         distribution: 'temurin'
         cache: gradle
     - run: ./gradlew integrationTest --no-daemon
+    - name: Archive system test report
+      uses: actions/upload-artifact@v3
+      with:
+        name: unit-tests-report
+        path: build/reports/tests/systemTest
+        retention-days: 1
