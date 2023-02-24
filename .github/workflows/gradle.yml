@@ -42,7 +42,7 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: gradle
-    - run: ./gradlew spotlessApply --no-daemon
+    - run: ./gradlew spotlessCheck --no-daemon
 
   
   unit-tests:
