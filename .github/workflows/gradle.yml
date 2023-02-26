@@ -42,7 +42,8 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: gradle
-    - run: ./gradlew spotlessCheck --no-daemon
+    - name: Dependency Check
+      run: ./gradlew spotlessCheck --build-cache
 
   
   unit-tests:
