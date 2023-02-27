@@ -11,6 +11,7 @@ on:
   push:
     branches:
     - develop
+    - ci_*
   pull_request:
     branches: 
     - develop
