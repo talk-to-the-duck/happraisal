@@ -12,9 +12,6 @@ on:
     branches:
     - develop
     - ci_*
-  pull_request:
-    branches: 
-    - develop
 
 permissions:
   contents: read
