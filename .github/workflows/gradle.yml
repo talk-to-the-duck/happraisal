@@ -43,7 +43,7 @@ jobs:
         distribution: 'temurin'
         cache: gradle
     - name: Dependency Check
-      run: gradle spotlessCheck
+      run: ./gradlew spotlessCheck
 
   
   unit-tests:
