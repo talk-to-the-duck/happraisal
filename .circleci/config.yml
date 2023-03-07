@@ -4,7 +4,7 @@ version: 2.1
 
 defaults:
   environment:
-    ARTIFACTS_EXPIRATION: 5 minutes
+    ARTIFACTS_EXPIRATION: 5m
 
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
