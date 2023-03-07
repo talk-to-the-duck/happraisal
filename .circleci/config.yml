@@ -26,7 +26,7 @@ jobs:
           paths:
             - build/libs/*.jar
       - store_artifacts:
-          path: build/libs/happraisal-*-SNAPSHOT.jar
+          path: build/libs/happraisal-0.0.1-SNAPSHOT.jar
           destination: happraisal.jar
 
 
