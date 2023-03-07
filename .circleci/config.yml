@@ -2,8 +2,8 @@
 # See: https://circleci.com/docs/2.0/language-java/
 version: 2.1
 
-defaults:
-  environment:
+defaults:	
+  environment:	
     ARTIFACTS_EXPIRATION: 5 minutes
 
 # Define a job to be invoked later in a workflow.
@@ -112,8 +112,6 @@ jobs:
             paths:
               - ~/.gradle
             key: v1-dependencies-{{ checksum "build.gradle" }}
-    environment:
-          ARTIFACTS_EXPIRATION: 1 minute
 
 workflows:
   version: 2.1
