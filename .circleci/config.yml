@@ -28,6 +28,9 @@ jobs:
       - store_artifacts:
           path: build/libs/happraisal-0.0.1-SNAPSHOT.jar
           destination: happraisal.jar
+    environment:
+      ARTIFACTS_EXPIRATION: 1m # Durée de vie des artefacts, ici 1 minute
+
 
 
   unit-tests:
