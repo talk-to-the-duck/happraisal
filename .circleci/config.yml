@@ -11,7 +11,7 @@ jobs:
     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
     docker:
       # specify the version you desire here
-      - image: cimg/openjdk:17.0.5
+      - image: cimg/openjdk:17.0.8
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -53,7 +53,7 @@ jobs:
 
   unit-tests:
     docker:
-      - image: cimg/openjdk:17.0.5
+      - image: cimg/openjdk:17.0.8
 
     working_directory: ~/happraisal
     steps:
@@ -75,7 +75,7 @@ jobs:
 
   integration-tests:
     docker:
-      - image: cimg/openjdk:17.0.5
+      - image: cimg/openjdk:17.0.8
 
     working_directory: ~/happraisal
     steps:
@@ -94,7 +94,7 @@ jobs:
 
   system-tests:
     docker:
-      - image: cimg/openjdk:17.0.5
+      - image: cimg/openjdk:17.0.8
 
     working_directory: ~/happraisal
     steps:
