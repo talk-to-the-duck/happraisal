@@ -5,7 +5,7 @@ plugins {
     id 'io.freefair.lombok' version "8.6"
 
     id "com.diffplug.spotless" version "6.23.3"
-
+    id("org.sonarqube") version "4.2.1.3168"
 }
 
 group = 'dev.t3p'
@@ -66,3 +66,34 @@ tasks.register('copyDockerCompose', Copy) {
 
 }
 tasks.compileJava.dependsOn('copyDockerCompose')
+
+jacocoTestReport {
+    executionData(
+            file("${project.buildDir}/jacoco/integrationTest.exec"),
+            file("${project.buildDir}/jacoco/test.exec"),
+            file("${project.buildDir}/jacoco/systmTest.exec")
+           )
+
+
+    reports {
+        // for sonarqube
+        xml.enabled true
+        xml.destination(file("${project.buildDir}/reports/jacoco/all-tests/jacocoAllTestReport.xml"))
+        // for devs
+        html.enabled true
+        html.destination file("${project.buildDir}/reports/jacoco/all-tests/html")
+    }
+}
+
+sonar {
+    properties {
+        property "sonar.projectkey", "happraisal"
+        property "sonar.projectName", "happraisal"
+        property "sonar.host.url", "https://sonarcloud.io"
+        property "sonar.coverage.jacoco.xmlReportPaths", "build/reports/jacoco/all-tests/jacocoAllTestReport.xml"
+        property "sonar.sources", "src/main,build.gradle,gradle"
+        property "sonar.tests", "src/test,src/integration-test,src/system-test"
+        property "sonar.junit.reportPaths", "build/test-results/test,build/test-results/integrationTest,build/test-results/systemTest"
+        property "sonar.organization", "talk-to-the-duck"
+    }
+}

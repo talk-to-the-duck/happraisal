@@ -17,6 +17,7 @@ Happraisal is an application that makes people working on the appraisal **h**app
 - [ ] Mutation tests (pitest)
 
 # Tests
+
 * [x] Create unit-test.gradle file
     * [x] add dependencies
 
@@ -34,7 +35,8 @@ Happraisal is an application that makes people working on the appraisal **h**app
     * [x] create integration test of repositories
 
 ## Unit Tests
-To create  unit tests we use Junit5 and Mockito
+
+To create unit tests we use Junit5 and Mockito
 
 ## Integration Tests
 
@@ -43,3 +45,19 @@ All integration tests are grouped in the integration-test source directory.
 We use:
 for integration tests of services, the annotations @DataJpaTest and @Sql
 for integration tests of endpoints, MockMvc and the annotation @WebMvctest
+
+## Sonarqube integration
+
+### documentation
+
+https://github.com/SonarSource/sonar-scanning-examples/blob/master/sonarqube-scanner-gradle/gradle-basic/build.gradle
+https://docs.sonarqube.org/latest/analyzing-source-code/scanners/sonarscanner-for-gradle/
+
+### run locally
+
+* run docker compose
+* execute
+
+```
+execute ./gradlew sonar -Dsonar.login=xxxxx -Dsonar.password=sssss
+```
