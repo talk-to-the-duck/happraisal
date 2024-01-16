@@ -1,5 +1,15 @@
-server:
-  port: 8088
+
+# Use postgres
+
+## create service in docker compose
+
+https://hub.docker.com/_/postgres
+
+>Note: you can add plugins docker
+
+
+## Add spring configuration
+```
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/happraisal
@@ -10,9 +20,9 @@ spring:
     open-in-view: false
     generate-ddl: true
     show-sql: true
-    database-platform: org.postgresql.dialect.PostgreSQLDialect
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
     properties:
         hibernate:
             format_sql: true
-            hbm2ddl:
-              auto: create
+
+```
