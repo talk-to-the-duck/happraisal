@@ -1,16 +1,16 @@
-# Migration Gradle to  8.3
+# Migration of Gradle to release 8.3
 
-## Presentation 
-this document presents the issues encountered during the migration to Gradle 8.3
+## Presentation
+This document presents the issues encountered during the migration to Gradle 8.3
 
 
 ## 1
 ````
- What went wrong:
+What went wrong:
 'void org.gradle.api.internal.artifacts.dsl.LazyPublishArtifact.<init>(org.gradle.api.provider.Provider)'
 
 ````
-> **solution**:  Upgrade dependencies springboot
+> **solution**: Upgrade springboot dependencies 
 
 ## 2
 ````
@@ -28,7 +28,7 @@ this document presents the issues encountered during the migration to Gradle 8.3
   - Variant 'mavenOptionalApiElements' capability org.springframework.boot:spring-boot-gradle-plugin-maven-optional:3.1.3 declares a library, packaged as a jar, and its dependencies declared externally:
 ````
 
-> **solution**: upgrades jdk
+> **solution**: upgrade JDK
 
 ## 3
 ````
@@ -49,7 +49,7 @@ C:\Users\Emmanuel\Developpement\sources\t3d\happraisal\src\main\java\dev\t3d\hap
   symbol: class Entity
 ````
 
-> **solution**: replace all javax references to jakarata
+> **solution**: replace import javax.persistence.*; with import jakarta.persistence.*;
 
 
 ## 5
@@ -59,7 +59,7 @@ After clean build
 Caused by: java.lang.IllegalAccessError: class com.google.googlejavaformat.java.JavaInput (in unnamed module @0x4e51f79) cannot access class com.sun.tools.javac.parser.Tokens$TokenKind (in module jdk.compiler) because module jdk.compiler does not export com.sun.tools.javac.parser to unnamed module @0x4e51f79
 ````
 
-> **solution**: upgradte spoless plugin to 6.20.2
+> **solution**: upgrade spotless plugin to 6.20.2
 
 
 ## 6
@@ -73,7 +73,7 @@ import org.springframework.boot.web.server.LocalServerPort;
 
 ````
 
-> **solution**: replace import org.springframework.boot.web.server.LocalServerPort; to import org.springframework.boot.test.web.server.LocalServerPort;
+> **solution**: replace import org.springframework.boot.web.server.LocalServerPort; with import org.springframework.boot.test.web.server.LocalServerPort;
 
 
 # Upgrade others dependencies
