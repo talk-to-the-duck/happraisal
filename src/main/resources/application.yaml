@@ -6,7 +6,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/happraisal
     username: happraisameAdimin
-    password: happraisale_password
+    password: happraisalePassword
     driverClassName: org.postgresql.Driver
   jpa:
     open-in-view: false

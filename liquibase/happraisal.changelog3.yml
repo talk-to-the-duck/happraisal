@@ -1,0 +1,160 @@
+databaseChangeLog:
+- changeSet:
+    id: 1705868532182-1
+    author: Emmanuel (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: form_pkey
+            name: id
+            type: UUID
+        schemaName: public
+        tableName: form
+- changeSet:
+    id: 1705868532182-2
+    author: Emmanuel (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: interview_pkey
+            name: id
+            type: UUID
+        - column:
+            name: date
+            type: TIMESTAMP WITHOUT TIME ZONE
+        - column:
+            name: employee_id
+            type: UUID
+        - column:
+            name: form_id
+            type: UUID
+        - column:
+            name: manager_id
+            type: UUID
+        schemaName: public
+        tableName: interview
+- changeSet:
+    id: 1705868532182-3
+    author: Emmanuel (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: person_pkey
+            name: id
+            type: UUID
+        - column:
+            name: first_name
+            type: VARCHAR(255)
+        - column:
+            name: is_manager
+            type: BOOLEAN
+        - column:
+            name: last_name
+            type: VARCHAR(255)
+        schemaName: public
+        tableName: person
+- changeSet:
+    id: 1705868532182-4
+    author: Emmanuel (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: question_answer_pkey
+            name: id
+            type: UUID
+        - column:
+            name: answer
+            type: VARCHAR(255)
+        - column:
+            name: question
+            type: VARCHAR(255)
+        - column:
+            name: form_id
+            type: UUID
+        schemaName: public
+        tableName: question_answer
+- changeSet:
+    id: 1705868532182-5
+    author: Emmanuel (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: manager_id
+        baseTableName: interview
+        baseTableSchemaName: public
+        constraintName: fk2bj0vg8yf4mwqovkr6spv0k2c
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: id
+        referencedTableName: person
+        referencedTableSchemaName: public
+        validate: true
+- changeSet:
+    id: 1705868532182-6
+    author: Emmanuel (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: employee_id
+        baseTableName: interview
+        baseTableSchemaName: public
+        constraintName: fkad1jtnkf0xrubftl9lwuayha4
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: id
+        referencedTableName: person
+        referencedTableSchemaName: public
+        validate: true
+- changeSet:
+    id: 1705868532182-7
+    author: Emmanuel (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: form_id
+        baseTableName: interview
+        baseTableSchemaName: public
+        constraintName: fknoio6n8pvcv2o6xdilyyn9gb3
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: id
+        referencedTableName: form
+        referencedTableSchemaName: public
+        validate: true
+- changeSet:
+    id: 1705868532182-8
+    author: Emmanuel (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: form_id
+        baseTableName: question_answer
+        baseTableSchemaName: public
+        constraintName: fknq2hbwhgec5fc8qe29yxn38qw
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: id
+        referencedTableName: form
+        referencedTableSchemaName: public
+        validate: true
+
