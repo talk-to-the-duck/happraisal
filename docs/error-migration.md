@@ -28,7 +28,7 @@ What went wrong:
   - Variant 'mavenOptionalApiElements' capability org.springframework.boot:spring-boot-gradle-plugin-maven-optional:3.1.3 declares a library, packaged as a jar, and its dependencies declared externally:
 ````
 
-> **solution**: upgrade JDK
+> **solution**: upgrade JDK to version 17.
 
 ## 3
 ````
