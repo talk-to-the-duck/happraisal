@@ -1,7 +1,6 @@
-
 databaseChangeLog:
 - changeSet:
-    id: 1705868532182-1
+    id: 1705956939689-1
     author: Emmanuel (generated)
     changes:
     - createTable:
@@ -13,10 +12,13 @@ databaseChangeLog:
               primaryKeyName: form_pkey
             name: id
             type: UUID
+        - column:
+            name: label
+            type: VARCHAR
         schemaName: public
         tableName: form
 - changeSet:
-    id: 1705868532182-2
+    id: 1705956939689-2
     author: Emmanuel (generated)
     changes:
     - createTable:
@@ -43,7 +45,7 @@ databaseChangeLog:
         schemaName: public
         tableName: interview
 - changeSet:
-    id: 1705868532182-3
+    id: 1705956939689-3
     author: Emmanuel (generated)
     changes:
     - createTable:
@@ -67,7 +69,7 @@ databaseChangeLog:
         schemaName: public
         tableName: person
 - changeSet:
-    id: 1705868532182-4
+    id: 1705956939689-4
     author: Emmanuel (generated)
     changes:
     - createTable:
@@ -91,7 +93,7 @@ databaseChangeLog:
         schemaName: public
         tableName: question_answer
 - changeSet:
-    id: 1705868532182-5
+    id: 1705956939689-5
     author: Emmanuel (generated)
     changes:
     - addForeignKeyConstraint:
@@ -108,7 +110,7 @@ databaseChangeLog:
         referencedTableSchemaName: public
         validate: true
 - changeSet:
-    id: 1705868532182-6
+    id: 1705956939689-6
     author: Emmanuel (generated)
     changes:
     - addForeignKeyConstraint:
@@ -125,7 +127,7 @@ databaseChangeLog:
         referencedTableSchemaName: public
         validate: true
 - changeSet:
-    id: 1705868532182-7
+    id: 1705956939689-7
     author: Emmanuel (generated)
     changes:
     - addForeignKeyConstraint:
@@ -142,7 +144,7 @@ databaseChangeLog:
         referencedTableSchemaName: public
         validate: true
 - changeSet:
-    id: 1705868532182-8
+    id: 1705956939689-8
     author: Emmanuel (generated)
     changes:
     - addForeignKeyConstraint:
