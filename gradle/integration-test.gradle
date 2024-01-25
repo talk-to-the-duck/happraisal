@@ -16,7 +16,7 @@ configurations {
 
 dependencies {
     integrationTestImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test'
-    integrationTestImplementation group: 'org.mockito', name: 'mockito-core', version: '5.5.0'
+    integrationTestImplementation group: 'org.mockito', name: 'mockito-core', version: '5.10.0'
     integrationTestImplementation group: 'org.mockito', name: 'mockito-inline', version: '5.2.0'
 }
 
