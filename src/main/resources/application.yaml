@@ -1,6 +1,8 @@
 server:
   port: 8088
 spring:
+  application:
+    name: happraisal-service
   datasource:
     url: jdbc:h2:mem:mydb
     username: sa
@@ -21,3 +23,15 @@ spring:
 springdoc:
   swagger-ui.path: /swagger-ui.html
   show-actuator: false
+
+
+management:
+  server:
+    port: 9999
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
