@@ -59,7 +59,7 @@ jobs:
         cache: gradle
     - run: ./gradlew test --no-daemon
     - name: Archive unit test report
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: unit-tests-report
         path: build/reports/tests/test
@@ -77,7 +77,7 @@ jobs:
         cache: gradle
     - run: ./gradlew integrationTest --no-daemon
     - name: Archive integration test report
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: integration-tests-report
         path: build/reports/tests/integrationTest
@@ -95,7 +95,7 @@ jobs:
         cache: gradle
     - run: ./gradlew systemTest --no-daemon
     - name: Archive system test report
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: system-tests-report
         path: build/reports/tests/systemTest
