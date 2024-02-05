@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - uses: actions/setup-java@v3
+    - uses: actions/setup-java@v4
       with:
         java-version: '17'
         distribution: 'temurin'
@@ -36,7 +36,7 @@ jobs:
     - uses: actions/checkout@v3
       with:
         fetch-depth: 0
-    - uses: actions/setup-java@v3
+    - uses: actions/setup-java@v4
       with:
         java-version: '17'
         distribution: 'temurin'
@@ -50,7 +50,7 @@ jobs:
     needs: spotless
     steps:
     - uses: actions/checkout@v3
-    - uses: actions/setup-java@v3
+    - uses: actions/setup-java@v4
       with:
         java-version: '17'
         distribution: 'temurin'
@@ -68,7 +68,7 @@ jobs:
     needs: spotless
     steps:
     - uses: actions/checkout@v3
-    - uses: actions/setup-java@v3
+    - uses: actions/setup-java@v4
       with:
         java-version: '17'
         distribution: 'temurin'
@@ -86,7 +86,7 @@ jobs:
     needs: spotless
     steps:
     - uses: actions/checkout@v3
-    - uses: actions/setup-java@v3
+    - uses: actions/setup-java@v4
       with:
         java-version: '17'
         distribution: 'temurin'
