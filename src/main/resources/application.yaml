@@ -1,6 +1,8 @@
 server:
   port: 8088
 spring:
+  application:
+    name: happraisal-service
   datasource:
     url: jdbc:h2:mem:mydb
     username: sa
@@ -15,3 +17,14 @@ spring:
             format_sql: true
   h2:
     console.enabled: true
+
+management:
+  server:
+    port: 9999
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
