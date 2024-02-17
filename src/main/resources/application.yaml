@@ -16,7 +16,8 @@ spring:
     properties:
         hibernate:
             format_sql: true
-
+  h2:
+    console.enabled: true
 
 # swagger-ui custom path
 springdoc:
