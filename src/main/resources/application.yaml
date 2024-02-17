@@ -15,3 +15,17 @@ spring:
             format_sql: true
   h2:
     console.enabled: true
+
+
+# swagger-ui custom path
+springdoc:
+  swagger-ui.path: /swagger-ui.html
+  show-actuator: true
+
+#  api-docs:
+#    path: /reflectoring-openapi
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
