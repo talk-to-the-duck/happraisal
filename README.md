@@ -3,6 +3,12 @@
 Happraisal is an application that makes people working on the appraisal **h**appy.
 
 
+# CI/CD
+We stopped using GitHub actions. We use CircleCI, you can find the list of pipelines runs following the link below:
+
+[Happraisal CI/CD on CircleCI](https://app.circleci.com/pipelines/github/talk-to-the-duck/happraisal)
+
+
 # List of improvements
 
 - [x] Add Unit tests (Junit5, Mockito, AssertJ)
