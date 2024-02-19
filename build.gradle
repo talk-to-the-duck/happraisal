@@ -9,7 +9,7 @@ plugins {
     id("org.sonarqube") version "4.2.1.3168"
 }
 
-group = 'dev.t3p'
+group = 'dev.t3d'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '21'
 
@@ -89,15 +89,18 @@ jacocoTestReport {
 }
 
 sonar {
+    println 'SONAR_PROJECT_KEY=' + System.getenv( 'SONAR_PROJECT_KEY' )
+    println 'SONAR_PROJECT_NAME=' + System.getenv( 'SONAR_PROJECT_NAME' )
+    println 'SONAR_ORGANIZATION=' + System.getenv( 'SONAR_ORGANIZATION' )
     properties {
         property "sonar.projectkey", System.getenv('SONAR_PROJECT_KEY')
-        property "sonar.projectName",  System.getenv('SONAR_PROJECT_NAME')
+        property "sonar.projectName", System.getenv('SONAR_PROJECT_NAME')
         property "sonar.host.url", "https://sonarcloud.io"
         property "sonar.coverage.jacoco.xmlReportPaths", "build/reports/jacoco/all-tests/jacocoAllTestReport.xml"
         property "sonar.sources", "src/main,build.gradle,gradle"
         property "sonar.tests", "src/test,src/integration-test,src/system-test"
         property "sonar.junit.reportPaths", "build/test-results/test,build/test-results/integrationTest,build/test-results/systemTest"
-        property "sonar.organization",  System.getenv('SONAR_ORGANIZATION')
-        property "sonar.token",  System.getenv('SONAR_TOKEN')
+        property "sonar.organization", System.getenv('SONAR_ORGANIZATION')
+        property "sonar.token", System.getenv('SONAR_TOKEN')
     }
 }
