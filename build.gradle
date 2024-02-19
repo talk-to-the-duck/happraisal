@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'jacoco'
     id 'org.springframework.boot' version '3.2.5'
     id 'io.spring.dependency-management' version '1.1.5'
     id 'io.freefair.lombok' version "8.6"
@@ -68,32 +69,35 @@ tasks.register('copyDockerCompose', Copy) {
 tasks.compileJava.dependsOn('copyDockerCompose')
 
 jacocoTestReport {
+    dependsOn(integrationTest)
+    dependsOn(systemTest)
     executionData(
             file("${project.buildDir}/jacoco/integrationTest.exec"),
             file("${project.buildDir}/jacoco/test.exec"),
-            file("${project.buildDir}/jacoco/systmTest.exec")
-           )
+            file("${project.buildDir}/jacoco/systemTest.exec")
+    )
 
 
     reports {
         // for sonarqube
-        xml.enabled true
+        xml.required = true
         xml.destination(file("${project.buildDir}/reports/jacoco/all-tests/jacocoAllTestReport.xml"))
-        // for devs
-        html.enabled true
+        // for dev
+        html.required = true
         html.destination file("${project.buildDir}/reports/jacoco/all-tests/html")
     }
 }
 
 sonar {
     properties {
-        property "sonar.projectkey", "happraisal"
-        property "sonar.projectName", "happraisal"
+        property "sonar.projectkey", System.getenv('SONAR_PROJECT_KEY')
+        property "sonar.projectName",  System.getenv('SONAR_PROJECT_NAME')
         property "sonar.host.url", "https://sonarcloud.io"
         property "sonar.coverage.jacoco.xmlReportPaths", "build/reports/jacoco/all-tests/jacocoAllTestReport.xml"
         property "sonar.sources", "src/main,build.gradle,gradle"
         property "sonar.tests", "src/test,src/integration-test,src/system-test"
         property "sonar.junit.reportPaths", "build/test-results/test,build/test-results/integrationTest,build/test-results/systemTest"
-        property "sonar.organization", "talk-to-the-duck"
+        property "sonar.organization",  System.getenv('SONAR_ORGANIZATION')
+        property "sonar.token",  System.getenv('SONAR_TOKEN')
     }
 }
