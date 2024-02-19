@@ -117,9 +117,10 @@ jobs:
         java-version: '21'
         distribution: 'temurin'
         cache: gradle
+    - run:
     - run: ./gradlew jacocoTestReport sonar
       env:
-        SONAR_ORGANIZATION: ${{env.SONAR_ORGANIZATION}}
-        SONAR_PROJECT_KEY: ${{env.SONAR_PROJECT_KEY}}D
-        SONAR_PROJECT_NAME: ${{env.SONAR_PROJECT_NAME}}D
+        SONAR_ORGANIZATION: ${{vars.SONAR_ORGANIZATION}}
+        SONAR_PROJECT_KEY: ${{vars.SONAR_PROJECT_KEY}}
+        SONAR_PROJECT_NAME: ${{vars.SONAR_PROJECT_NAME}}
         SONAR_TOKEN: ${{secrets.SONAR_PROJECT_KEY}}D
