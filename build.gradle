@@ -89,9 +89,6 @@ jacocoTestReport {
 }
 
 sonar {
-    println 'SONAR_PROJECT_KEY=' + System.getenv( 'SONAR_PROJECT_KEY' )
-    println 'SONAR_PROJECT_NAME=' + System.getenv( 'SONAR_PROJECT_NAME' )
-    println 'SONAR_ORGANIZATION=' + System.getenv( 'SONAR_ORGANIZATION' )
     properties {
         property "sonar.projectkey", System.getenv('SONAR_PROJECT_KEY')
         property "sonar.projectName", System.getenv('SONAR_PROJECT_NAME')
