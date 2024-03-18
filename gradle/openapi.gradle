@@ -1,0 +1,81 @@
+// Validating a single specification
+openApiValidate {
+    setInputSpec("$rootDir/contract/happraisal-openapi-docs.yaml")
+}
+
+// Before compiling the sources, we have to generate some classes via the openApiGenerate task.
+tasks.getByName("compileJava").dependsOn("openApiGenerate")
+
+openApiGenerate {
+
+    inputSpec = "$rootDir/contract/happraisal-openapi-docs.yaml"
+    verbose = Boolean.TRUE
+
+    // Generate a set of server side stub classes suitable for SpringBoot:
+    generatorName = "spring"
+    outputDir = project.layout.buildDirectory.dir("generated-openapi-springboot").get().asFile.path
+
+    apiPackage = "dev.t3d.happraisal.controller.api"
+    packageName = "dev.t3d.happraisal.controller"
+    invokerPackage = "dev.t3d.happraisal.config"
+    modelPackage = "dev.t3d.happraisal.web.dto"
+
+    generateModelTests = false
+    generateApiTests = false
+    generateModelDocumentation = true
+
+    // add:
+    // library: "spring-cloud", to add the implementation of the default method as
+    // getRequest().ifPresent(request
+    //....
+    // see https://cloud.spring.io/spring-cloud-netflix/multi/multi_spring-cloud-feign.html
+    // feign was created by Netflix
+    // library: "spring-cloud",
+
+    // see later:
+    // delegatePattern: "true",
+
+    configOptions = [
+            dateLibrary: "java8",
+            useOptional: "true",
+            hideGenerationTimestamp: "true",
+            interfaceOnly: "true",
+//            library: "spring-boot",
+            library: "spring-cloud",
+            useTags: "true",
+            swaggerDocketConfig: "false",
+            swaggerAnnotations: "false",
+            apiFirst: "false",
+            configPackage: "dev.t3d.happraisal.config",
+            basePackage: "dev.t3d.happraisal",
+            useSpringController: "false",
+            useSpringBoot3: "true"
+    ]
+
+
+    // other settings omitted
+
+
+//    globalProperties.set([
+//            validateSpec: "true",
+//            outputDir: "openapi-generated",
+//            inputSpec: "openapi/happraisal-openapi-docs.yaml",
+//            packageName: "dev.t3d.happraisal.controller",
+//            apiPackage: "dev.t3d.happraisal.controller.api",
+//            modelDocs: "false",
+//            apis: "false"
+//    ])
+}
+
+//// Define a task for validating one specification
+//task validateGoodSpec(type: org.openapitools.generator.gradle.plugin.tasks.ValidateTask) {
+//    inputSpec.set("$rootDir/petstore-v3.0.yaml")
+//}
+//
+//// Define a task for validating another specification
+//task validateBadSpec(type: org.openapitools.generator.gradle.plugin.tasks.ValidateTask) {
+//    inputSpec.set("$rootDir/petstore-v3.0-invalid.yaml")
+//}
+//
+//// Define a task for batch validations
+//task validateSpecs(dependsOn: ['validateGoodSpec', 'validateBadSpec'])

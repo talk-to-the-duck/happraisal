@@ -6,6 +6,7 @@ plugins {
 
     id "com.diffplug.spotless" version "6.23.3"
 
+    id "org.openapi.generator" version "7.2.0"
 }
 
 group = 'dev.t3p'
@@ -46,7 +47,7 @@ apply from: "gradle/unit-test.gradle"
 apply from: "gradle/integration-test.gradle"
 apply from: "gradle/system-test.gradle"
 apply from: "gradle/spotless.gradle"
-
+apply from: "gradle/openapi.gradle"
 
 systemTest {
     shouldRunAfter integrationTest
