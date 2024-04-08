@@ -30,7 +30,7 @@ dependencies {
     implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
     implementation 'com.h2database:h2:2.2.220'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    implementation group: 'io.micrometer', name: 'micrometer-registry-prometheus', version: '1.12.3'
+    implementation group: 'io.micrometer', name: 'micrometer-registry-prometheus', version: '1.12.5'
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: '3.2.2'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
