@@ -6,7 +6,6 @@ import java.net.URISyntaxException;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.containers.DockerComposeContainer;
-import org.testcontainers.containers.wait.strategy.Wait;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
 @Testcontainers
@@ -26,8 +25,8 @@ public class AbstractIntegrationTestWithDatabase {
     }
     var container =
         new DockerComposeContainer<>(dockerComposeFile)
-            .withExposedService("db", 5432)
-            .waitingFor("db", Wait.forListeningPort());
+            .withServices("db", "liquibase")
+            .withExposedService("db", 5432);
 
     container.start();
     return container;
@@ -38,6 +37,6 @@ public class AbstractIntegrationTestWithDatabase {
     var postgresExposedPort = dockerComposeContainer.getServicePort("db", 5432);
     dynamicPropertyRegistry.add(
         "spring.datasource.url",
-        () -> String.format("jdbc:postgresql://localhost:%s/happraisal", postgresExposedPort));
+        () -> String.format("jdbc:postgresql://localhost:%s/happraisaldb", postgresExposedPort));
   }
 }

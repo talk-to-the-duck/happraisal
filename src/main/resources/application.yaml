@@ -4,20 +4,16 @@ spring:
   application:
     name: happraisal-service
   datasource:
-    url: jdbc:postgresql://localhost:5432/happraisal
-    username: happraisameAdimin
-    password: happraisalePassword
+    url: jdbc:postgresql://localhost:5432/happraisaldb
     driverClassName: org.postgresql.Driver
   jpa:
     open-in-view: false
-    generate-ddl: true
+    generate-ddl: false
     show-sql: true
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     properties:
         hibernate:
             format_sql: true
-  h2:
-    console.enabled: false
 
 management:
   server:
