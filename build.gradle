@@ -53,18 +53,15 @@ systemTest {
 tasks.register('copyDockerCompose', Copy) {
     ["./src/integration-test/resources","./src/system-test/resources"].forEach {dest ->
         copy {
-            println(dest)
                 from(layout.projectDirectory.file("./docker/docker-compose-postgresql.yml"))
             into layout.projectDirectory.dir(dest)
 
         }
         copy {
-            println(dest)
             from(layout.projectDirectory.file("./docker/.env"))
             into layout.projectDirectory.dir(dest)
 
         }
-        // cf https://dzone.com/articles/gradle-copy-to-multiple-destinations
     }
 
 }
