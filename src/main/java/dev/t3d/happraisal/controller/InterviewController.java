@@ -1,6 +1,7 @@
 /* (C)2023 */
 package dev.t3d.happraisal.controller;
 
+import dev.t3d.happraisal.controller2.InterviewControllerApi;
 import dev.t3d.happraisal.entity.Interview;
 import dev.t3d.happraisal.service.InterviewService;
 import java.net.URI;
@@ -14,7 +15,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 @RestController
 @RequestMapping("/interviews")
 @RequiredArgsConstructor
-public class InterviewController {
+public class InterviewController implements InterviewControllerApi {
 
   private final InterviewService interviewService;
 
