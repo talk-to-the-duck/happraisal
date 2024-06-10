@@ -1,6 +1,16 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:base"
+    "config:base", ":dependencyDashboardApproval"
+  ],
+  "baseBranches": ["develop", "chore/t3d-82"],
+  "packageRules": [
+    {
+      "groupName": "Non major dependencies",
+      "groupSlug": "all-minor-patch",
+      "matchPackagePatterns": ["*"],
+      "matchUpdateTypes": ["minor","patch"],
+      "automerge": true
+    }
   ]
 }
