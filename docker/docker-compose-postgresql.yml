@@ -8,9 +8,9 @@ services:
     image: postgres:14.7-alpine3.17
     restart: always
     environment:
-      POSTGRES_PASSWORD: "happraisal_password!"
-      POSTGRES_USER: happraisal
-      POSTGRES_DB: happraisaldb
+      POSTGRES_PASSWORD: happraisal_dbpassword!
+      POSTGRES_USER: happraisal_dbuser
+      POSTGRES_DB: happraisal_dbname
     healthcheck:
       test: ["CMD-SHELL",  "pg_isready -d happraisaldb -U happraisal || exit 1"]
       interval: 10s
@@ -25,9 +25,9 @@ services:
        db:
         condition: service_healthy
     environment:
-        LIQUIBASE_COMMAND_USERNAME: happraisal
-        LIQUIBASE_COMMAND_PASSWORD: "happraisal_password!"
-        LIQUIBASE_COMMAND_URL: jdbc:postgresql://db:5432/happraisaldb
+        LIQUIBASE_COMMAND_USERNAME: happraisal_dbuser
+        LIQUIBASE_COMMAND_PASSWORD: happraisal_dbpassword!
+        LIQUIBASE_COMMAND_URL: jdbc:postgresql://db:5432/happraisal_dbnamedb
         LIQUIBASE_COMMAND_DRIVER: org.postgresql.Driver
         LIQUIBASE_COMMAND_CHANGELOG_FILE: happraisal.changelog.yml
     command: update

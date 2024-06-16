@@ -9,16 +9,19 @@ import org.testcontainers.containers.DockerComposeContainer;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
 @Testcontainers
-public class AbstractIntegrationTestWithDatabase {
+public abstract class AbstractIntegrationTestWithDatabase {
 
-  static DockerComposeContainer<?> dockerComposeContainer = instantiatetDockerComposeContainer();
+  public static final String DOCKER_COMPOSE_POSTGRESQL_YML = "docker-compose-postgresql.yml";
+  static DockerComposeContainer<?> dockerComposeContainer = instantiateDockerComposeContainer();
 
-  private static DockerComposeContainer<?> instantiatetDockerComposeContainer() {
+  private static DockerComposeContainer<?> instantiateDockerComposeContainer() {
     var dockerComposeFileResource =
-        AbstractIntegrationTestWithDatabase.class.getResource("/docker-compose-postgresql.yml");
+        AbstractIntegrationTestWithDatabase.class.getResource("/" + DOCKER_COMPOSE_POSTGRESQL_YML);
     File dockerComposeFile;
     try {
-      assert dockerComposeFileResource != null;
+     if(dockerComposeFileResource == null) {
+       throw new RuntimeException(String.format("The docker compose file '%s' not exists", DOCKER_COMPOSE_POSTGRESQL_YML));
+     }
       dockerComposeFile = new File(dockerComposeFileResource.toURI());
     } catch (URISyntaxException e) {
       throw new RuntimeException(e);

@@ -19,8 +19,8 @@ dependencies {
     integrationTestImplementation group: 'org.mockito', name: 'mockito-core', version: '5.5.0'
     integrationTestImplementation group: 'org.mockito', name: 'mockito-inline', version: '5.2.0'
     integrationTestImplementation 'org.springframework.boot:spring-boot-testcontainers'
-    integrationTestImplementation 'org.testcontainers:junit-jupiter'
-    integrationTestImplementation 'org.testcontainers:postgresql'
+    integrationTestImplementation 'org.testcontainers:junit-jupiter:1.19.8'
+    integrationTestImplementation 'org.testcontainers:postgresql:1.19.8'
 
 }
 
