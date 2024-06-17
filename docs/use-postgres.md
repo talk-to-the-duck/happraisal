@@ -4,7 +4,7 @@
 ## create service in docker compose 
 
 
-Objetif:  execute the database locally
+Objective:  execute the database locally
 
 https://hub.docker.com/_/postgres
 
