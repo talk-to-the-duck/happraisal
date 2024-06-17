@@ -9,11 +9,11 @@ import org.testcontainers.containers.DockerComposeContainer;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
 @Testcontainers
-public class AbstractIntegrationTestWithDatabase {
+public abstract class AbstractIntegrationTestWithDatabase {
 
-  static DockerComposeContainer<?> dockerComposeContainer = instantiatetDockerComposeContainer();
+  static DockerComposeContainer<?> dockerComposeContainer = instantiateDockerComposeContainer();
 
-  private static DockerComposeContainer<?> instantiatetDockerComposeContainer() {
+  private static DockerComposeContainer<?> instantiateDockerComposeContainer() {
     var dockerComposeFileResource =
         AbstractIntegrationTestWithDatabase.class.getResource("/docker-compose-postgresql.yml");
     File dockerComposeFile;
