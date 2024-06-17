@@ -48,7 +48,7 @@ In a SpringBoot project, it's possible to execute changelog at the startup but t
 # Errors
 ## with docker compose
 
-* After update username and database I got 
+* After having updated username and database I got 
 
 ``` shell
 psql: FATAL:  role "postgres" does not exist
