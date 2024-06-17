@@ -43,5 +43,3 @@ All integration tests are grouped in the integration-test source directory.
 We use:
 for integration tests of services, the annotations @DataJpaTest and @Sql
 for integration tests of endpoints, MockMvc and the annotation @WebMvctest
-
-
