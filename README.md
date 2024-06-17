@@ -45,15 +45,3 @@ for integration tests of services, the annotations @DataJpaTest and @Sql
 for integration tests of endpoints, MockMvc and the annotation @WebMvctest
 
 
-
-# Renovate
-
-https://github.com/renovatebot/renovate
-
-installation : https://github.com/renovatebot/tutorial
-
-* desired settings
-  * group path, minor upgrade
-  * auto merge for minor and path upgrade
-  * use dashboard: "dependencyDashboard": true
-  * limited concurrent pr :  "prConcurrentLimit": 5
