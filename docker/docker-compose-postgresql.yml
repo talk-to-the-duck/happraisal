@@ -12,7 +12,7 @@ services:
       POSTGRES_USER: happraisal_dbuser
       POSTGRES_DB: happraisal_dbname
     healthcheck:
-      test: ["CMD-SHELL",  "pg_isready -d happraisaldb -U happraisal || exit 1"]
+      test: ["CMD-SHELL",  "pg_isready -d happraisal_dbname -U happraisal_dbuser || exit 1"]
       interval: 10s
       timeout: 3s
       retries: 3
@@ -27,7 +27,7 @@ services:
     environment:
         LIQUIBASE_COMMAND_USERNAME: happraisal_dbuser
         LIQUIBASE_COMMAND_PASSWORD: happraisal_dbpassword!
-        LIQUIBASE_COMMAND_URL: jdbc:postgresql://db:5432/happraisal_dbnamedb
+        LIQUIBASE_COMMAND_URL: jdbc:postgresql://db:5432/happraisal_dbname
         LIQUIBASE_COMMAND_DRIVER: org.postgresql.Driver
         LIQUIBASE_COMMAND_CHANGELOG_FILE: happraisal.changelog.yml
     command: update
