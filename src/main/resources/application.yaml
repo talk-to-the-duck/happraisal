@@ -4,7 +4,9 @@ spring:
   application:
     name: happraisal-service
   datasource:
-    url: jdbc:postgresql://localhost:5432/happraisaldb
+    url: jdbc:postgresql://localhost:5432/happraisal_dbname
+    username: happraisal_dbuser
+    password: happraisal_dbpassword!
     driverClassName: org.postgresql.Driver
   jpa:
     open-in-view: false

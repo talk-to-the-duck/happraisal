@@ -5,4 +5,4 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/happraisal_dbname
     username: happraisal_dbuser
-    password: happraisal_password!
+    password: happraisal_dbpassword!

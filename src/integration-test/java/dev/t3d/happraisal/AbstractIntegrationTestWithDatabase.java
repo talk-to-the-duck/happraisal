@@ -42,6 +42,7 @@ public abstract class AbstractIntegrationTestWithDatabase {
     var postgresExposedPort = dockerComposeContainer.getServicePort("db", 5432);
     dynamicPropertyRegistry.add(
         "spring.datasource.url",
-        () -> String.format("jdbc:postgresql://localhost:%s/happraisaldb", postgresExposedPort));
+        () ->
+            String.format("jdbc:postgresql://localhost:%s/happraisal_dbname", postgresExposedPort));
   }
 }
