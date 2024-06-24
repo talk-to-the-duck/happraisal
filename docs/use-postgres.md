@@ -37,9 +37,16 @@ https://docs.liquibase.com/workflows/liquibase-community/existing-project.html
 ## Use liquibase
 Liquibase is an open-source database schema change management solution.
 
-### generate changelog
-liquibase --driver=org.postgresql.Driver --changeLogFile=happraisal.changelog.xml  --classpath=postgresql-9.4-1201-jdbc41.jar --url="jdbc:postgresql://localhost:5432/happraisal_dbname"  --username=<USER_NAME> --password=<PASSWD> --defaultSchemaName=<SCHEMA_NAME> generateChangeLog   
+### install liquibase 
 
+To install Liquibase on your system, follow the instructions on this [page ](https://docs.liquibase.com/start/install/home.html)
+
+### generate changelog
+To generate the changelog file for an existing database, you **MUST** run the command below
+
+```shell
+liquibase --driver=org.postgresql.Driver --changeLogFile=happraisal.changelog.xml  --url="jdbc:postgresql://localhost:5432/happraisal_dbname"  --username=<USER_NAME> --password=<PASSWD> --defaultSchemaName=<SCHEMA_NAME> generateChangeLog   
+````
 
 ### use liquibase separately
 Once the changelog has been generated, we must execute it.
