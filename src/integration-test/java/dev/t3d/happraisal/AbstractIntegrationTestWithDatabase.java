@@ -22,7 +22,7 @@ public abstract class AbstractIntegrationTestWithDatabase {
       if (dockerComposeFileResource == null) {
         throw new RuntimeException(
             String.format(
-                "The docker compose file '%s' not exists", DOCKER_COMPOSE_POSTGRESQL_YML));
+                "The docker compose file '%s' does not exist", DOCKER_COMPOSE_POSTGRESQL_YML));
       }
       dockerComposeFile = new File(dockerComposeFileResource.toURI());
     } catch (URISyntaxException e) {
