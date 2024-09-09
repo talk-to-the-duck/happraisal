@@ -1,4 +1,4 @@
-/* (C)2023 */
+/* (C)2023-2024 */
 package dev.t3d.happraisal.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -16,10 +16,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class PostInterviewSTest {
+@ActiveProfiles("system-test")
+class PostInterviewSTest extends AbstractIntegrationTestWithDatabase {
   @Autowired Jackson2ObjectMapperBuilder mapperBuilder;
 
   @LocalServerPort private Integer port;

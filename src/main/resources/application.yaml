@@ -4,19 +4,18 @@ spring:
   application:
     name: happraisal-service
   datasource:
-    url: jdbc:h2:mem:mydb
-    username: sa
-    password: password
-    driverClassName: org.h2.Driver
+    url: jdbc:postgresql://localhost:5432/happraisal_dbname
+    username: happraisal_dbuser
+    password: happraisal_dbpassword!
+    driverClassName: org.postgresql.Driver
   jpa:
     open-in-view: false
+    generate-ddl: false
     show-sql: true
-    database-platform: org.hibernate.dialect.H2Dialect
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
     properties:
         hibernate:
             format_sql: true
-  h2:
-    console.enabled: true
 
 management:
   server:

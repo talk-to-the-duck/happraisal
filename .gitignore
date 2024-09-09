@@ -40,3 +40,4 @@ out/
 ### Obsidian ###
 .obsidian/
 src/.obsidian/
+/src/**/resources/docker-compose-postgresql.yml
