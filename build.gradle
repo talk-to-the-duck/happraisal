@@ -29,7 +29,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
     implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
-    implementation 'com.h2database:h2:2.2.220'
+    runtimeOnly 'org.postgresql:postgresql:42.7.3'
 
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springdoc:springdoc-openapi:2.3.0'
@@ -41,8 +41,6 @@ dependencies {
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
-
-
 
 test {
     useJUnitPlatform()
@@ -57,3 +55,20 @@ apply from: "gradle/openapi.gradle"
 systemTest {
     shouldRunAfter integrationTest
 }
+
+tasks.register('copyDockerCompose', Copy) {
+    ["./src/integration-test/resources","./src/system-test/resources"].forEach {dest ->
+        copy {
+                from(layout.projectDirectory.file("./docker/docker-compose-postgresql.yml"))
+            into layout.projectDirectory.dir(dest)
+
+        }
+        copy {
+            from(layout.projectDirectory.file("./docker/.env"))
+            into layout.projectDirectory.dir(dest)
+
+        }
+    }
+
+}
+tasks.compileJava.dependsOn('copyDockerCompose')
