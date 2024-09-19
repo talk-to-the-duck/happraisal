@@ -10,7 +10,7 @@ plugins {
 
 group = 'dev.t3p'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '17'
+sourceCompatibility = '21'
 
 configurations {
     compileOnly {
