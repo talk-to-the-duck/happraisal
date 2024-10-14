@@ -59,8 +59,5 @@ https://docs.sonarqube.org/latest/analyzing-source-code/scanners/sonarscanner-fo
 * execute
 
 ```
-execute ./gradlew sonar 
-
-
-
+execute ./gradlew sonar
 ```
