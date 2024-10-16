@@ -69,6 +69,7 @@ tasks.register('copyDockerCompose', Copy) {
 tasks.compileJava.dependsOn('copyDockerCompose')
 
 jacocoTestReport {
+    dependsOn(test)
     dependsOn(integrationTest)
     dependsOn(systemTest)
     executionData(
