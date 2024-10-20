@@ -62,7 +62,9 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: unit-tests-report
-        path: build/reports/tests/test
+        path: |
+            build/reports/tests/test
+            build/jacoco/test.exec
         retention-days: 1
         
   integration-tests:
@@ -80,7 +82,9 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: integration-tests-report
-        path: build/reports/tests/integrationTest
+        path: |
+            build/reports/tests/integrationTest
+            build/jacoco/integrationTest.exec
         retention-days: 1
         
   system-tests:
@@ -98,5 +102,24 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: system-tests-report
-        path: build/reports/tests/systemTest
+        path: |
+            build/reports/tests/systemTest
+            build/jacoco/systemTest.exec
         retention-days: 1
+  sonarqube-analysis:
+    runs-on: ubuntu-latest
+    environment: sonarqube
+    needs: [unit-tests, integration-tests, system-tests]
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-java@v4
+      with:
+        java-version: '21'
+        distribution: 'temurin'
+        cache: gradle
+    - run: ./gradlew jacocoTestReport sonar
+      env:
+        SONAR_ORGANIZATION: ${{vars.SONAR_ORGANIZATION}}
+        SONAR_PROJECT_KEY: ${{vars.SONAR_PROJECT_KEY}}
+        SONAR_PROJECT_NAME: ${{vars.SONAR_PROJECT_NAME}}
+        SONAR_TOKEN: ${{secrets.SONAR_TOKEN}}
