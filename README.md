@@ -55,7 +55,7 @@ The documentation about the sonar gradle plugin is [here](https://docs.sonarsour
 ### run locally
 
 * run docker compose
-* set the environment variables : 
+* set the environment variables :
   * SONAR_ORGANIZATION=talk-to-the-duck
   * SONAR_PROJECT_KEY=happraisal;
   * SONAR_PROJECT_NAME=happraisal;
