@@ -1,10 +1,17 @@
+/* (C)2024 */
 package dev.t3d.happraisal.controller;
+
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import dev.t3d.happraisal.entity.Form;
-import dev.t3d.happraisal.entity.QuestionAnswer;
-import dev.t3d.happraisal.service.FormService;
+import dev.t3d.happraisal.api.controller.FormController;
+import dev.t3d.happraisal.domain.model.QuestionAnswer;
+import dev.t3d.happraisal.domain.service.FormService;
+import dev.t3d.happraisal.persistence.entity.FormEntity;
+import dev.t3d.happraisal.persistence.entity.QuestionAnswerEntity;
+import java.util.UUID;
 import lombok.NoArgsConstructor;
 import org.assertj.core.api.BDDAssertions;
 import org.junit.jupiter.api.DisplayName;
@@ -18,11 +25,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-
-import java.util.UUID;
-
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.eq;
 
 @WebMvcTest(controllers = FormController.class)
 @NoArgsConstructor
@@ -71,7 +73,7 @@ public class FormControllerITest {
   @DisplayName("Should create a form")
   void should_create_form() throws Exception {
     // given
-    var form = new Form();
+    var form = new FormEntity();
 
     // when
     mockMvc
@@ -92,7 +94,7 @@ public class FormControllerITest {
     // given
     var formId = UUID.fromString("ace429dd-e31c-46d7-b9e2-0a11bdc830f2");
     var questionLabel = "What is your name";
-    var questionAnswer = new QuestionAnswer(null, questionLabel, null, null);
+    var questionAnswer = new QuestionAnswerEntity(null, questionLabel, null, null);
 
     // when
     mockMvc

@@ -1,9 +1,14 @@
+/* (C)2024 */
 package dev.t3d.happraisal.controller;
+
+import static org.mockito.ArgumentMatchers.any;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import dev.t3d.happraisal.entity.Person;
-import dev.t3d.happraisal.service.PersonService;
+import dev.t3d.happraisal.api.controller.PersonController;
+import dev.t3d.happraisal.domain.service.PersonService;
+import dev.t3d.happraisal.persistence.entity.PersonEntity;
+import java.util.UUID;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.BDDMockito;
@@ -14,10 +19,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-
-import java.util.UUID;
-
-import static org.mockito.ArgumentMatchers.any;
 
 @WebMvcTest(controllers = PersonController.class)
 public class PersonControllerITest {
@@ -66,7 +67,7 @@ public class PersonControllerITest {
   void should_create_form() throws Exception {
     // given
     var person =
-        new Person(
+        new PersonEntity(
             UUID.fromString("34d1a1f9-25f9-4aa4-98cd-01531cb8ec34"),
             "lastName",
             "firstName",
