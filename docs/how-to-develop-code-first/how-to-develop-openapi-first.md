@@ -5,22 +5,43 @@ COMMENT: THE TEXT BELOW is a low quality draft
 
 
 Now that you have an OpenAPI definition file, you can generate code for both the server and the client side.
-Many languages are supported but here we focus on the server side for a Java application.
 
-We use the OpenAPI generator coming from OpenAPITools.
-To do this, you have to add the plugin below to the `build.gradle` file:
+We use the OpenAPI generator coming from OpenAPITools. Many languages are supported but here we focus on the server side for a Java application. Any Open API definition file has to be valid. Before generating the code, the input file must be valid.
+
+When invoked, the first thing that the generator does is calling a validator to check for the validity of the Open API definition file. If the file is valid, the generators create the code.
+
+While the generator can be called from the command line, the best practice is to run it during the build process.
+
+Let's see how to configure Gradle to invoke the generator.
+
+First, add the OpenAPI generator plugin to the `build.gradle` file:
 
 ```
 id "org.openapi.generator" version "7.2.0"
 ```
 
-then create a file `gradle/openapi.gradle` and add to it the task definition:
+then create a file `gradle/openapi.gradle` and write in it the following task definition:
 
 ```
 openApiValidate {
     inputSpec.set("$rootDir/contract/happraisal-openapi-docs.yaml")
 }
 ```
+
+You need to instruct Gradle to use the generated code:
+
+```
+sourceSets {
+    main {
+        java {
+            srcDir file("${buildDir}/generated-openapi-springboot/src/main/java")
+        }
+    }
+}
+```
+
+The primary purpose of the sourceSets configuration is to instruct Gradle to include the generated OpenAPI code as part of the main source set during the build process. This ensures that the generated code is compiled, packaged, and deployed along with the rest of the application, ensuring that the generated code is properly integrated into the build process.
+
 
 
 ## How to work with an OpenAPI definition file?
