@@ -12,35 +12,6 @@ openApiValidate {
 // Before compiling the sources, we have to generate some classes via the openApiGenerate task.
 tasks.getByName("compileJava").dependsOn("openApiGenerate")
 
-
-/*
-sourceSets {
-    openApi {
-        java {
-            // see https://docs.gradle.org/current/userguide/building_java_projects.html#sec:java_source_sets
-
-            // Not working:
-            // srcDir "${buildDir}/generated-openapi-springboot/src/main/java"
-
-            // Not working but it doesn't block:
-            // Deprecated?
-//            srcDir(project.layout.buildDirectory.dir("generated-openapi-springboot").get().asFile.path)
-
-            // Not working but it doesn't block:
-            // Deprecated?
-            srcDir file("${buildDir}/generated-openapi-springboot/src/main/java")
-
-            compileClasspath += sourceSets.main.output
-            runtimeClasspath += sourceSets.main.output
-
-//            compileClasspath += sourceSets.main.output
-//            runtimeClasspath += sourceSets.main.output
-        }
-    }
-}
- */
-
-
 sourceSets {
     main {
         java {
@@ -51,12 +22,14 @@ sourceSets {
 
 openApiGenerate {
 
-    inputSpec = "$rootDir/contract/happraisal-openapi-docs.yaml"
     verbose = Boolean.TRUE
-
     // Generate a set of server side stub classes suitable for SpringBoot:
     generatorName = "spring"
+
+    inputSpec = "$rootDir/contract/happraisal-openapi-docs.yaml"
     outputDir = project.layout.buildDirectory.dir("generated-openapi-springboot").get().asFile.path
+
+
 
 //    apiPackage = "dev.t3d.happraisal.controller.api"
     apiPackage = "dev.t3d.happraisal.controller2"
