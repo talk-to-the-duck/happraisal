@@ -6,7 +6,7 @@ plugins {
 
     id "com.diffplug.spotless" version "6.23.3"
 
-    id "org.openapi.generator" version "7.2.0"
+    id "org.openapi.generator" version "7.8.0"
 }
 
 group = 'dev.t3p'
