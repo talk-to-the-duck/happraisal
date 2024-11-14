@@ -2,7 +2,6 @@
 package dev.t3d.happraisal.persistence.entity;
 
 import jakarta.persistence.*;
-
 import java.util.UUID;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;

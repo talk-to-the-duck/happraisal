@@ -10,7 +10,7 @@ import org.hibernate.annotations.GenericGenerator;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(exclude = {"form"})
-@Table(name="question_answer")
+@Table(name = "question_answer")
 public class QuestionAnswerEntity {
 
   @Id
