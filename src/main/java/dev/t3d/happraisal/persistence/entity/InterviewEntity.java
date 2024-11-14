@@ -13,6 +13,7 @@ import org.hibernate.annotations.GenericGenerator;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
+@Table(name = "interview")
 public class InterviewEntity {
 
   @Id
