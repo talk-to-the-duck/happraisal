@@ -6,12 +6,25 @@ import jakarta.persistence.PreUpdate;
 
 public class AuditForm {
     @PrePersist
-    @PreUpdate
-    @PreRemove
-    private void beforeAnyOperation(Object object) {
-        System.out.println("Object "+ object.toString());
+    private void beforeCreate(Object object) {
+        var audit = new Audit((Form) object, "CREATE");
+        System.out.println(audit.toString());
     }
 
+
+    @PreUpdate
+    private void beforeUpdate(Object object) {
+        var audit = new Audit((Form) object, "UPDATE");
+        System.out.println(audit.toString());
+    }
+
+
+
+    @PreRemove
+    private void beforeDelete(Object object) {
+        var audit = new Audit((Form) object, "DELETE");
+        System.out.println(audit.toString());
+    }
 
 
 }
