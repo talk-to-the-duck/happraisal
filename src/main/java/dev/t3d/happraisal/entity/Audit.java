@@ -12,9 +12,9 @@ public class Audit {
     private final LocalDate date;
     private final String action;
 
-    public Audit(Form object, String action) {
+    public Audit(AuditableEntity object, String action) {
         entity = object.getClass().getName();
-        objectId = String.valueOf(object.getId());
+        objectId = object.getObjectId();
         date = LocalDate.now();
         this.action = action;
 

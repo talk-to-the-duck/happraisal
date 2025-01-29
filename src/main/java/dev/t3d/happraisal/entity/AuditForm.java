@@ -5,9 +5,11 @@ import jakarta.persistence.PreRemove;
 import jakarta.persistence.PreUpdate;
 
 public class AuditForm {
+
+
     @PrePersist
-    private void beforeCreate(Object object) {
-        var audit = new Audit((Form) object, "CREATE");
+    private void beforeCreate(AuditableEntity object) {
+        var audit = new Audit(object, "CREATE");
         System.out.println(audit.toString());
     }
 

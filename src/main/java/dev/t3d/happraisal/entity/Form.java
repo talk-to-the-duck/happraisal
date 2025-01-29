@@ -16,7 +16,7 @@ import org.springframework.boot.actuate.audit.listener.AuditListener;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-public class Form  {
+public class Form implements AuditableEntity {
 
   @Id
   @Column(columnDefinition = "uuid")
@@ -24,6 +24,13 @@ public class Form  {
   @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
   private UUID id;
 
+
+
   @OneToMany(mappedBy = "form", targetEntity = QuestionAnswer.class, fetch = FetchType.LAZY)
   private Set<QuestionAnswer> questions;
+
+  @Override
+  public String getObjectId() {
+    return id.toString();
+  }
 }
