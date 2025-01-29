@@ -6,6 +6,9 @@ import java.util.Set;
 import java.util.UUID;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.boot.actuate.audit.listener.AuditListener;
+
+@EntityListeners(AuditForm.class)
 
 @Entity
 @Getter
@@ -13,7 +16,7 @@ import org.hibernate.annotations.GenericGenerator;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-public class Form {
+public class Form  {
 
   @Id
   @Column(columnDefinition = "uuid")
