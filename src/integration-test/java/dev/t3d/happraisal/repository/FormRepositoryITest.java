@@ -2,19 +2,25 @@
 package dev.t3d.happraisal.repository;
 
 import dev.t3d.happraisal.AbstractIntegrationTestWithDatabase;
-import dev.t3d.happraisal.entity.Form;
-import dev.t3d.happraisal.entity.QuestionAnswer;
+import dev.t3d.happraisal.entity.*;
+
 import java.util.Set;
+
+import jakarta.persistence.EntityManager;
 import org.assertj.core.api.BDDAssertions;
 import org.assertj.core.api.Condition;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.context.TestConfiguration;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Import;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
 
 @DataJpaTest
 @ActiveProfiles("it")
+@Import(value = {AuditWriterConfiguration.class})
 public class FormRepositoryITest extends AbstractIntegrationTestWithDatabase {
   @Autowired private FormRepository formRepository;
 
@@ -48,4 +54,5 @@ public class FormRepositoryITest extends AbstractIntegrationTestWithDatabase {
     // then
     BDDAssertions.then(actualForms).as("Check if all forms has been found").hasSize(2);
   }
+
 }

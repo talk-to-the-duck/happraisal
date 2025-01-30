@@ -1,16 +1,39 @@
 package dev.t3d.happraisal.entity;
 
-import lombok.ToString;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
+
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode
 @ToString
 public class Audit {
 
-    private final String entity;
-    private final String objectId;
-    private final LocalDate date;
-    private final String action;
+
+    @Id
+    @Column(columnDefinition = "uuid")
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    private UUID id;
+
+    private String entity;
+
+    private String objectId;
+
+    private LocalDate date;
+
+    private String action;
 
     public Audit(AuditableEntity object, String action) {
         entity = object.getClass().getName();
@@ -20,6 +43,4 @@ public class Audit {
 
 
     }
-
-
 }

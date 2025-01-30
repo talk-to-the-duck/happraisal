@@ -1,0 +1,28 @@
+databaseChangeLog:
+    - changeSet:
+        id: create-audit-table
+        author: Emmanuel (generated)
+        changes:
+        - createTable:
+            schemaName: public
+            tableName: audit
+            columns:
+            - column:
+                constraints:
+                  nullable: false
+                  primaryKey: true
+                  primaryKeyName: audit_pkey
+                name: id
+                type: UUID
+            - column:
+                name: entity
+                type: VARCHAR(100)
+            - column:
+                name: object_id
+                type: VARCHAR(50)
+            - column:
+                name: action
+                type: VARCHAR(50)
+            - column:
+                name: date
+                type: TIMESTAMP WITHOUT TIME ZONE
