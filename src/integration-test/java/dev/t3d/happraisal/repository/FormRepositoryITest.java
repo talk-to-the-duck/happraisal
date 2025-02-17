@@ -26,8 +26,7 @@ public class FormRepositoryITest extends AbstractIntegrationTestWithDatabase {
     @Test
     void should_create_form() {
         // given
-        var questionAnswer =
-                new QuestionAnswer(null, "What do you think about your work this year", null, null);
+        var questionAnswer = new QuestionAnswer(null, "What do you think about your work this year", null, null);
         var formToSave = new Form(null, Set.of(questionAnswer));
 
         // when
@@ -35,13 +34,8 @@ public class FormRepositoryITest extends AbstractIntegrationTestWithDatabase {
 
         // then
         var idNotNull = new Condition<Form>((Form form) -> form.getId() != null, "form id not null");
-        var asOneQuestion =
-                new Condition<Form>(
-                        (Form form) -> form.getQuestions().size() == 1, "form has only one question");
-        BDDAssertions.then(actualForm)
-                .as("Check if a new form has been saved.")
-                .has(idNotNull)
-                .has(asOneQuestion);
+        var asOneQuestion = new Condition<Form>((Form form) -> form.getQuestions().size() == 1, "form has only one question");
+        BDDAssertions.then(actualForm).as("Check if a new form has been saved.").has(idNotNull).has(asOneQuestion);
     }
 
     @Test
