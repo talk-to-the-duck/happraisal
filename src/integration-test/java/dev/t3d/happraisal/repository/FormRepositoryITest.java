@@ -2,8 +2,9 @@
 package dev.t3d.happraisal.repository;
 
 import dev.t3d.happraisal.AbstractIntegrationTestWithDatabase;
-import dev.t3d.happraisal.entity.Form;
-import dev.t3d.happraisal.entity.QuestionAnswer;
+import dev.t3d.happraisal.persistence.entity.FormEntity;
+import dev.t3d.happraisal.persistence.entity.QuestionAnswerEntity;
+import dev.t3d.happraisal.persistence.repository.FormRepository;
 import java.util.Set;
 import org.assertj.core.api.BDDAssertions;
 import org.assertj.core.api.Condition;
@@ -22,17 +23,18 @@ public class FormRepositoryITest extends AbstractIntegrationTestWithDatabase {
   void should_create_form() {
     // given
     var questionAnswer =
-        new QuestionAnswer(null, "What do you think about your work this year", null, null);
-    var formToSave = new Form(null, Set.of(questionAnswer));
+        new QuestionAnswerEntity(null, "What do you think about your work this year", null, null);
+    var formToSave = new FormEntity(null, Set.of(questionAnswer));
 
     // when
     var actualForm = formRepository.save(formToSave);
 
     // then
-    var idNotNull = new Condition<Form>((Form form) -> form.getId() != null, "form id not null");
+    var idNotNull =
+        new Condition<FormEntity>((FormEntity form) -> form.getId() != null, "form id not null");
     var asOneQuestion =
-        new Condition<Form>(
-            (Form form) -> form.getQuestions().size() == 1, "form has only one question");
+        new Condition<FormEntity>(
+            (FormEntity form) -> form.getQuestions().size() == 1, "form has only one question");
     BDDAssertions.then(actualForm)
         .as("Check if a new form has been saved.")
         .has(idNotNull)
